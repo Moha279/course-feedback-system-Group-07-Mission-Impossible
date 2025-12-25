@@ -53,11 +53,6 @@ A web-based (live) Course Feedback System designed for universities. This projec
 The project follows a modular structure to separate the frontend views from the data logic:
 
 ```text
-├── 00_mainDatei/
+├── main/
 │   ├── css/
 │   └── js/
-├── 01_hilfsDatei/
-│   ├── css/
-│   ├── js/
-│   └── media/
-└── 02_full_JS_Datei/
