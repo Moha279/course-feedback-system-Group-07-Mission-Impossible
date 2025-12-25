@@ -32,21 +32,9 @@ A web-based (live) Course Feedback System designed for universities. This projec
     ```bash
     git clone [https://github.com/Moha279/course-feedback-system-Group-07-Mission-Impossible.git](https://github.com/Moha279/course-feedback-system-Group-07-Mission-Impossible.git)
     ```
-
-2.  **Database Setup**
-    * Ensure **CouchDB** is running on your machine (default port: `5984`).
-    * Verify access by navigating to `http://127.0.0.1:5984/_utils/` in your browser.
-
-3.  **Launch the App**
-    * **Option A (Simple):** Open the `index.html` file directly in your browser.
-    * **Option B (Recommended):** Use a local static server to avoid CORS issues:
-        ```bash
-        npx serve .
-        ```
-
-4.  **Usage**
+2.  **Usage**
     * Log in as a professor to create a session and generate a QR code.
-    * Open the link in a separate window (or scan with a phone) to simulate a student.
+    * Open the link in a separate window (or scan with a phone) to simulate a student
 
 ## Folder Structure
 
