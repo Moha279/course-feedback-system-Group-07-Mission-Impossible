@@ -1,33 +1,63 @@
 # Course Feedback System
 
-A web-based (live) Course Feedback System designed for university courses with a twist. This project aims to simplify the feedback loop between students and lecturers using QR codes and real-time analytics.
-
-## Project Overview
-The goal is to create an application where students can easily provide anonymous feedback for specific sessions, while professors can track engagement and satisfaction week-over-week without complex setup.
+A web-based (live) Course Feedback System designed for universities. This project simplifies the feedback loop between students and lecturers using QR codes, real-time analytics, and AI-driven insights.
 
 ## Features
 
-### For Students
-* **Easy Access:** Join a session instantly by scanning a QR Code.
-* **Anonymous Feedback:** Provide session-specific feedback safely and honestly.
-* **History:** View an overview of participated sessions and anonymous group feedback results.
+* **Session Management (Professor Portal)**
+    * Create courses and weekly sessions with minimal setup.
+    * Use pre-defined templates (e.g., "Lecture Quality", "Quick Feedback") or custom questions.
+    * Generate session-specific QR codes for instant student access.
 
-### For Professors & Lecturers
-* **Quick Setup:** Create courses and weekly sessions with minimal effort.
-* **Live Dashboard:** See feedback indicators and question voting in real-time during the lecture.
-* **QR Generation:** Automatically generate QR codes for students to join.
-* **Analytics:** Track week-to-week changes in ratings and get a summary after each session closes.
+* **Real-Time Analytics & AI**
+    * **Live View:** Monitor incoming responses in real-time during the lecture.
+    * **Keyword Cloud:** Automatically visualizes common terms from text answers (filters responses by clicking on keywords).
+    * **AI Summary:** Generates a 1-5 sentence summary of open text responses using AI logic.
 
-## Tech Stack
-* **Frontend:** HTML, CSS, JavaScript
-* **Backend/Database:** CouchDB
-* **Methodology:** WizardOfOz (for prototyping/simulation)
+* **Student Interaction**
+    * Anonymous feedback submission via mobile or desktop.
+    * Supports Star Ratings (1-5), Multiple Choice, and Text input.
+    * Instant view of aggregated group results after session closure.
 
-## Getting Started
-(We will add installation instructions here later)
+## Requirements
 
-1. Clone the repo
-2. Open index.html (or start the server)
+* **Browser:** Modern web browser (Chrome, Firefox, Edge, or Safari).
+* **Database:** CouchDB (must be installed and running locally).
+* **Runtime:** No complex backend server required (runs client-side with direct DB connection).
 
----
-Created for the University Design Project.
+## Installation & Running
+
+1.  **Clone the repository**
+    Download the project to your local machine:
+    ```bash
+    git clone [https://github.com/Moha279/course-feedback-system-Group-07-Mission-Impossible.git](https://github.com/Moha279/course-feedback-system-Group-07-Mission-Impossible.git)
+    ```
+
+2.  **Database Setup**
+    * Ensure **CouchDB** is running on your machine (default port: `5984`).
+    * Verify access by navigating to `http://127.0.0.1:5984/_utils/` in your browser.
+
+3.  **Launch the App**
+    * **Option A (Simple):** Open the `index.html` file directly in your browser.
+    * **Option B (Recommended):** Use a local static server to avoid CORS issues:
+        ```bash
+        npx serve .
+        ```
+
+4.  **Usage**
+    * Log in as a professor to create a session and generate a QR code.
+    * Open the link in a separate window (or scan with a phone) to simulate a student.
+
+## Folder Structure
+
+The project follows a modular structure to separate the frontend views from the data logic:
+
+```text
+├── 00_mainDatei/
+│   ├── css/
+│   └── js/
+├── 01_hilfsDatei/
+│   ├── css/
+│   ├── js/
+│   └── media/
+└── 02_full_JS_Datei/
