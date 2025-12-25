@@ -54,5 +54,5 @@ The project follows a modular structure to separate the frontend views from the 
 
 ```text
 ├── main/
-│   ├── css/
-│   └── js/
+    ├── css/
+    └── js/
