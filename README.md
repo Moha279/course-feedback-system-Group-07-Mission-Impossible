@@ -17,7 +17,6 @@ The goal of this project is to enable fast, anonymous, and structured feedback d
 ### Real-Time Analytics & AI
 * **Live View:** Monitor incoming responses in real-time during the lecture.
 * **Keyword Cloud:** Automatically visualizes common terms from text answers and allows filtering by selected keywords.
-* **AI Summary:** Generates a concise 1–5 sentence summary of open text responses using AI-based logic.
 
 ### Student Interaction
 * **Anonymous Feedback:** Submission via mobile or desktop devices without login barriers.
@@ -31,7 +30,6 @@ The goal of this project is to enable fast, anonymous, and structured feedback d
 * **HTML5** – Structure of the web application
 * **CSS3** – Styling and layout
 * **JavaScript (ES6+)** – Application logic and interactivity
-* **CouchDB** – NoSQL database for storing sessions and feedback
 * **QR Code Generation** – Client-side QR code creation
 
 ---
