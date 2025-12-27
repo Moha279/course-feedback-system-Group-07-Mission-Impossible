@@ -53,15 +53,35 @@
                                 <p class="session-info-2">Submitted 2 days ago</p>
                             </div>
                             <div class="session-actions">
-                                <button class="btn btn-outline btn-sm">
+                                <button class="btn btn-outline btn-sm" onclick="showAnalytics('cs101-week1')">
                                     <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M3 3v18h18"></path><path d="M18 17V9M13 17V5M8 17v-3"></path></svg>
                                     View All Responses
                                 </button>
-                                <button class="btn btn-primary btn-sm">
+                                <button class="btn btn-primary btn-sm" onclick="toggleFeedback('cs101-week1')">
                                     <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
                                     View My Response
                                 </button>
                             </div>
+                        </div>
+
+                        
+                        <div id="feedback-cs101-week1" style="display: none; margin: 1rem 0; padding: 1rem; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 0.5rem; margin-left: 2%;">
+                            <h4 style="margin-bottom: 1rem; color: #252525; font-weight: 600;">My Feedback for CS101 - Week 1</h4>
+                            
+                            <div style="margin-bottom: 1.5rem;">
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">How clear was the lecture?</p>
+                                <div style="color: #fbbf24; font-size: 1.25rem; margin-bottom: 0.5rem;">★★★★☆</div>
+                                <p style="color: #6b7280; font-size: 0.875rem;">I rated this 4 out of 5 stars.</p>
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <p style="font-weight: 600; margin-bottom: 0.5rem;">What worked well in this session?</p>
+                                <div style="background: #f3f3f5; padding: 1rem; border-radius: 0.375rem; border-left: 4px solid #030213; font-style: italic;">
+                                    I really appreciated how the professor broke down the basic programming concepts step by step. The examples were practical and helped me understand variables and data types much better. The pace felt just right for someone new to programming.
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-outline btn-sm" onclick="toggleFeedback('cs101-week1')">Hide Feedback</button>
                         </div>
 
                         <div class="session-item">
@@ -74,7 +94,7 @@
                                 <button class="btn btn-outline btn-sm">
                                     <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M3 3v18h18"></path><path d="M18 17V9M13 17V5M8 17v-3"></path></svg>
                                     View All Responses</button>
-                                <button class="btn btn-primary btn-sm">
+                                <button class="btn btn-primary btn-sm" onclick="toggleFeedback('cs101-week2')">
                                     <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
                                     View My Response</button>
                             </div>
@@ -99,7 +119,7 @@
                                 <button class="btn btn-outline btn-sm">
                                     <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M3 3v18h18"></path><path d="M18 17V9M13 17V5M8 17v-3"></path></svg>
                                     View All Responses</button>
-                                <button class="btn btn-primary btn-sm">
+                                <button class="btn btn-primary btn-sm" onclick="toggleFeedback('cs101-week2')">
                                     <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
                                     View My Response</button>
                             </div>
@@ -114,5 +134,42 @@
     </div>
 
 </body>
+
+<script>
+function toggleFeedback(sessionId) {
+    const feedbackElement = document.getElementById('feedback-' + sessionId);
+    const analyticsElement = document.getElementById('analytics-' + sessionId);
+    
+    // Hide analytics if showing
+    if (analyticsElement && analyticsElement.style.display === 'block') {
+        analyticsElement.style.display = 'none';
+    }
+    
+    // Toggle feedback
+    if (feedbackElement.style.display === 'none') {
+        feedbackElement.style.display = 'block';
+    } else {
+        feedbackElement.style.display = 'none';
+    }
+}
+
+function showAnalytics(sessionId) {
+    const analyticsElement = document.getElementById('analytics-' + sessionId);
+    const feedbackElement = document.getElementById('feedback-' + sessionId);
+    
+    // Hide feedback if showing
+    if (feedbackElement && feedbackElement.style.display === 'block') {
+        feedbackElement.style.display = 'none';
+    }
+    
+    // Show analytics
+    analyticsElement.style.display = 'block';
+}
+
+function hideAnalytics(sessionId) {
+    const analyticsElement = document.getElementById('analytics-' + sessionId);
+    analyticsElement.style.display = 'none';
+}
+</script>
 
 </html>
