@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Course Feedback System</title>
-    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/auth.css">
 
 </head>
@@ -38,7 +37,7 @@
                 </div>
 
                 <div id="signup-form-container" style="display: none;">
-                    <form >
+                    <form onsubmit="handleSignup(event)">
                         <div class="auth-form-group">
                             <label class="auth-label">Full Name</label>
                             <input type="text" name="name" class="auth-input" placeholder="Max Mustermann" required>
@@ -58,9 +57,13 @@
 
             <div class="auth-divider"></div>
 
-            <button class="auth-student-btn" >
-                Access Student Dashboard
-            </button>
+            
+                <a href="student-dashboard.html">
+                    <button class="auth-student-btn" >
+                        Access Student Dashboard
+                    </button>
+                </a>
+           
         </div>
     </div>
 
@@ -84,6 +87,38 @@
                 loginForm.style.display = 'none';
             }
         }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const password = formData.get('password');
+            
+            const users = Storage.load('users') || [];
+            
+            if (users.find(u => u.email === email)) {
+                showToast('Email already exists', 'error');
+                return;
+            }
+            
+            const newUser = {
+                id: generateId('user'),
+                name,
+                email,
+                password
+            };
+            
+            users.push(newUser);
+            Storage.save('users', users);
+            Storage.save('currentUser', { id: newUser.id, email: newUser.email, name: newUser.name });
+            
+            showToast('Account created successfully!');
+            setTimeout(() => {
+                window.location.href = 'dashboard.html';
+            }, 1000);
+        }
+
     </script>
 </body>
 </html>
