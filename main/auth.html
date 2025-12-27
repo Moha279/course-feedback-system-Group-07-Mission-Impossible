@@ -23,7 +23,7 @@
 
             <div class="auth-form-container" style=" margin-bottom: 1.5rem;">
                 <div id="login-form-container">
-                    <form >
+                    <form onsubmit="handleLogin(event)">
                         <div class="auth-form-group" style="margin-bottom: 1rem;">
                             <label class="auth-label">Email</label>
                             <input type="email" name="email" class="auth-input" placeholder="max.mustermann@example.de" required>
@@ -117,6 +117,23 @@
             setTimeout(() => {
                 window.location.href = 'dashboard.html';
             }, 1000);
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const email = formData.get('email');
+            const password = formData.get('password');
+            
+            const users = Storage.load('users') || [];
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                Storage.save('currentUser', { id: user.id, email: user.email, name: user.name });
+                window.location.href = 'dashboard.html';
+            } else {
+                showToast('Invalid email or password', 'error');
+            }
         }
 
     </script>
