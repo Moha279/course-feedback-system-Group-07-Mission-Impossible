@@ -1,63 +1,118 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard - Feedback System</title>
+    <title>Student Dashboard</title>
     <link rel="stylesheet" href="css/student-dashboard.css">
+
 </head>
+
 <body>
-    <header class="page-header">
-        <div class="page-header-content">
-            <div>
-                <h1>Student Dashboard</h1>
-                <p style="color: var(--muted-foreground);">Welcome back, student123!</p>
+
+    <div class="page-wrapper">
+
+        <header class="page-header">
+
+            <div class="page-header-content">
+
+                <div>
+                    <h1>Student Dashboard</h1>
+                    <p>Welcome back, student123!</p>
+                </div>
+
+                <button class="btn btn-outline">
+                    <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"></path>
+                        <path d="M16 17l5-5-5-5M21 12H9"></path>
+                    </svg>
+                    Switch User
+                </button>
+
             </div>
-            <button class="btn btn-outline">Switch User</button>
-        </div>
-    </header>
-    <main class="container">
+
+        </header>
+
+        <main class="container">
+
+            <h2 class="mb-4">Your Participated Sessions</h2>
+            
+            <div class="flex flex-col gap-6">
+                
+                <section class="course-group">
+                    <h3 class="course-title">Introduction to Computer Science</h3>
+
+                    <div class="flex flex-col gap-3 ml-3">
+                        
+                        <div class="session-item">
+                            <div>
+                                <h4>Week 1: Introduction to Programming</h4>
+                                <p class="session-info-1">CS101 - Week 1</p>
+                                <p class="session-info-2">Submitted 2 days ago</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn btn-outline btn-sm">
+                                    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M3 3v18h18"></path><path d="M18 17V9M13 17V5M8 17v-3"></path></svg>
+                                    View All Responses
+                                </button>
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
+                                    View My Response
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="session-item">
+                            <div>
+                                <h4>Week 2: Control Structures</h4>
+                                <p class="session-info-1">CS101 - Week 2</p>
+                                <p class="session-info-2">Submitted 1 week ago</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn btn-outline btn-sm">
+                                    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M3 3v18h18"></path><path d="M18 17V9M13 17V5M8 17v-3"></path></svg>
+                                    View All Responses</button>
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
+                                    View My Response</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </section>
+
+                <section class="course-group">
+
+                    <h3 class="course-title">Data Structures & Algorithms</h3>
+
+                    <div class="flex flex-col gap-3 ml-3">
+                        
+                        <div class="session-item">
+                            <div>
+                                <h4>Week 1: Arrays and Lists</h4>
+                                <p class="session-info-1">CS201 - Week 1</p>
+                                <p class="session-info-2">Submitted 3 days ago</p>
+                            </div>
+                            <div class="session-actions">
+                                <button class="btn btn-outline btn-sm">
+                                    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M3 3v18h18"></path><path d="M18 17V9M13 17V5M8 17v-3"></path></svg>
+                                    View All Responses</button>
+                                <button class="btn btn-primary btn-sm">
+                                    <svg class="icon" viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"></path><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"></path></svg>
+                                    View My Response</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
         </main>
+    </div>
+
 </body>
+
 </html>
-<section class="course-group">
-    <h3 class="mb-3" style="color: var(--foreground); font-weight: 600;">Introduction to Computer Science</h3>
-    <div class="flex flex-col gap-3">
-        <div class="session-item">
-            <div>
-                <h4>Week 1: Introduction to Programming</h4>
-                <p class="text-sm" style="color: var(--muted-foreground);">CS101 - Week 1</p>
-                <p class="text-xs" style="color: var(--muted-foreground);">Submitted 2 days ago</p>
-            </div>
-            <div class="session-actions" style="display: flex; gap: 0.5rem;">
-                <button class="btn btn-outline btn-sm">View All Responses</button>
-                <button class="btn btn-primary btn-sm">View My Response</button>
-            </div>
-        </div>
-        <div class="session-item">
-            <div>
-                <h4>Week 2: Control Structures</h4>
-                <p class="text-sm" style="color: var(--muted-foreground);">CS101 - Week 2</p>
-                <p class="text-xs" style="color: var(--muted-foreground);">Submitted 1 week ago</p>
-            </div>
-            <div class="session-actions" style="display: flex; gap: 0.5rem;">
-                <button class="btn btn-outline btn-sm">View All Responses</button>
-                <button class="btn btn-primary btn-sm">View My Response</button>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="course-group" style="margin-top: 2rem;">
-    <h3 class="mb-3" style="color: var(--foreground); font-weight: 600;">Data Structures & Algorithms</h3>
-    <div class="session-item">
-        <div>
-            <h4>Week 1: Arrays and Lists</h4>
-            <p class="text-sm" style="color: var(--muted-foreground);">CS201 - Week 1</p>
-            <p class="text-xs" style="color: var(--muted-foreground);">Submitted 3 days ago</p>
-        </div>
-        <div class="session-actions" style="display: flex; gap: 0.5rem;">
-            <button class="btn btn-outline btn-sm">View All Responses</button>
-            <button class="btn btn-primary btn-sm">View My Response</button>
-        </div>
-    </div>
-</section>
