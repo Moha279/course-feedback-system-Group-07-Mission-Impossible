@@ -1,56 +1,86 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+    <title>Student Feedback</title>
     <link rel="stylesheet" href="css/student-feedback.css">
-    <title>Give Feedback</title>
+
 </head>
 <body>
-    <div style="min-height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem;">
-        <div class="container max-w-2xl">
+
+    <div>
+        <div class="container">
             <div class="card">
+                
                 <div id="feedback-content">
-                    <div class="card-header text-center">
+                    <div class="card-header">
+                        <svg class="icon-xl" viewBox="0 0 24 24">
+                            <path d="M12 14l9-5-9-5-9 5 9 5z" fill="currentColor"></path>
+                            <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" fill="currentColor" opacity="0.5"></path>
+                        </svg>
                         <h2 class="card-title">Week 1: Introduction to Programming</h2>
-                        <p class="card-description">CS101 - Week 1</p>
+                        <p class="card-description">Introduction to Computer Science (CS101)</p>
                     </div>
+
                     <div class="card-content">
-                        <form onsubmit="submitFeedback(event)">
+
+                        <form id="feedback-form" onsubmit="submitFeedback(event)">
                             <div class="form-group">
-                                <label class="form-label">Username (Optional)</label>
-                                <input type="text" class="input" placeholder="Enter your username">
+                                <label class="form-label">username (Optional)</label>
+                                <input type="text" class="input" placeholder="choose yourself a username to review your submitions later">
                             </div>
+
                             <div class="form-group">
-                                <label class="form-label">1. Rating</label>
-                                <div class="star-rating" style="display: flex; gap: 5px; color: #ecc94b;">
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <label class="form-label">1. How well did you understand today's content?</label>
+                                <div class="star-rating">
+                                    <svg class="star" viewBox="0 0 24 24" fill="#ecc94b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="#ecc94b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="#ecc94b"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="#cbd5e0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="#cbd5e0"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="form-label">2. Any comments?</label>
+                                <textarea class="textarea" rows="3" placeholder="Share your thoughts..."></textarea>
+                            </div>
+
                             <button type="submit" class="btn btn-primary w-full">Submit Feedback</button>
                         </form>
+
                     </div>
-                </div>
+                </div> 
+
             </div>
         </div>
     </div>
+
+    <script>
+        function submitFeedback(event) {
+            event.preventDefault(); 
+            
+            const container = document.getElementById('feedback-content');
+            
+            container.innerHTML = `
+                <div class="card-content">
+                    <div class="submit-icon">
+                        <svg width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="#48bb78" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </div>
+                    <h2 class="card-title" style="margin-bottom: 0.5rem;">Thank You!</h2>
+                    <p class="card-description" style="margin-bottom: 2.5rem;">Your feedback has been submitted.</p>
+                    
+                    <a href="student-dashboard.html" class="btn btn-primary w-full">
+                        Go to Dashboard
+                    </a>
+                </div>
+            `;
+        }
+    </script>
 </body>
 </html>
-<script>
-    function submitFeedback(event) {
-        event.preventDefault();
-        const container = document.getElementById('feedback-content');
-        container.innerHTML = `
-            <div class="card-content text-center" style="padding: 4rem 2rem;">
-                <h2 class="card-title">Thank You!</h2>
-                <p>Your feedback has been submitted.</p>
-                <a href="index.html" class="btn btn-primary w-full" style="margin-top: 2.5rem; text-decoration: none; justify-content: center;">
-                    Go to Dashboard
-                </a>
-            </div>
-        `;
-    }
-</script>
