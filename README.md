@@ -17,7 +17,6 @@ The goal of this project is to enable fast, anonymous, and structured feedback d
 ### Real-Time Analytics & AI
 * **Live View:** Monitor incoming responses in real-time during the lecture.
 * **Keyword Cloud:** Automatically visualizes common terms from text answers and allows filtering by selected keywords.
-* **AI Summary:** Generates a concise 1–5 sentence summary of open text responses using AI-based logic.
 
 ### Student Interaction
 * **Anonymous Feedback:** Submission via mobile or desktop devices without login barriers.
@@ -31,7 +30,6 @@ The goal of this project is to enable fast, anonymous, and structured feedback d
 * **HTML5** – Structure of the web application
 * **CSS3** – Styling and layout
 * **JavaScript (ES6+)** – Application logic and interactivity
-* **CouchDB** – NoSQL database for storing sessions and feedback
 * **QR Code Generation** – Client-side QR code creation
 
 ---
@@ -39,8 +37,6 @@ The goal of this project is to enable fast, anonymous, and structured feedback d
 ## ⚙️ Requirements
 
 * **Browser:** Modern web browser (Chrome, Firefox, Edge, or Safari).
-* **Database:** [Apache CouchDB](https://couchdb.apache.org/) (must be installed and running locally on Port 5984).
-* **Backend:** No dedicated backend server required (client-side application with direct database access).
 
 ---
 
@@ -51,19 +47,12 @@ Download the project to your local machine:
 ```bash
 git clone [https://github.com/Moha279/course-feedback-system-Group-07-Mission-Impossible.git](https://github.com/Moha279/course-feedback-system-Group-07-Mission-Impossible.git)
 ```
-2. Database Setup
 
-Ensure CouchDB is running on your machine.
-
-    Default Port: 5984
-
-    Verify access by navigating to http://127.0.0.1:5984/_utils/ in your browser.
-
-3. Launch the App
+2. Launch the App
 
 Open the index.html file inside the main folder directly in your browser.
 
-4. Usage
+3. Usage
 
     Log in as a professor (or create a new profile).
 
