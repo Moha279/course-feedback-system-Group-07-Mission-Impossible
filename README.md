@@ -78,12 +78,8 @@ The project separates distinct views (HTML) from styling (CSS) and logic (JS):
 ├── student-feedback.html     # The actual feedback form interface for students
 ├── css/
 │   ├── auth.css              # Styles specific to login/signup forms
-│   ├── common.css            # Global styles, variables (colors/fonts), and resets
-│   ├── components.css        # Reusable UI elements (buttons, modals, cards)
 │   ├── dashboard.css         # Layout styles for the professor dashboard
-│   ├── live-feedback.css     # Styles for the real-time visualization view
-│   ├── session-analytics.css # Styles for data visualization and charts
-│   └── style.css             # General fallback styles or landing page styles
+│   ├── live-analytics.css     # Styles for the real-time visualization view and for data visualization and charts
 └── js/
     ├── app.js                # Core application logic and global utilities
     ├── auth.js               # Handles authentication logic and user sessions
