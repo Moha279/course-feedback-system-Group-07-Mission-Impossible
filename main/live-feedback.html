@@ -94,3 +94,22 @@
 
         </div>
     </div>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById('response-count').innerText = "19";
+            
+            document.getElementById('bar-q1-3').style.height = "45%"; 
+            document.getElementById('bar-q2-3').style.height = "65%"; 
+            
+            document.getElementById('val-q1-3').innerText = "9";
+            document.getElementById('val-q2-3').innerText = "13";
+            
+            const newItem = document.querySelector('.hidden-new');
+            newItem.style.display = 'block';
+            newItem.style.animation = 'fadeIn 0.5s';
+
+        }, 2000);
+    </script>
+</body>
+</html>
