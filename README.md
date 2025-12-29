@@ -79,11 +79,8 @@ The project separates distinct views (HTML) from styling (CSS) and logic (JS):
 ├── css/
 │   ├── auth.css              # Styles specific to login/signup forms
 │   ├── dashboard.css         # Layout styles for the professor dashboard
-│   ├── live-analytics.css     # Styles for the real-time visualization view and for data visualization and charts
-└── js/
-    ├── app.js                # Core application logic and global utilities
-    ├── auth.js               # Handles authentication logic and user sessions
-    └── dashboard.js          # Logic for fetching courses and UI interactions
+│   └──  live-analytics.css     # Styles for the real-time visualization view and for data visualization and charts
+
 ```
 🎓 Academic Context
 
