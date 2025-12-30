@@ -68,6 +68,7 @@
     </div>
 
     <script>
+        
         function switchTab(tab) {
             currentTab = tab;
             const loginTab = document.getElementById('login-tab');
@@ -135,6 +136,13 @@
                 showToast('Invalid email or password', 'error');
             }
         }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const currentUser = getCurrentUser();
+        if (currentUser) {
+            window.location.href = 'dashboard.html';
+        }
+    });
 
     </script>
 </body>
