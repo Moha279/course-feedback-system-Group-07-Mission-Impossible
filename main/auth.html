@@ -76,6 +76,22 @@
             },
             remove: (key) => localStorage.removeItem(key)
         };
+
+        function generateId() {
+            return Date.now().toString();
+        }
+
+        function showToast(message) {
+            alert(message);
+        }
+
+        function getCurrentUser() {
+            return Storage.load("currentUser");
+        }
+
+        
+
+
     </script>
 </body>
 </html>
