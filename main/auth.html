@@ -68,82 +68,14 @@
     </div>
 
     <script>
-        
-        function switchTab(tab) {
-            currentTab = tab;
-            const loginTab = document.getElementById('login-tab');
-            const signupTab = document.getElementById('signup-tab');
-            const loginForm = document.getElementById('login-form-container');
-            const signupForm = document.getElementById('signup-form-container');
-            
-            if (tab === 'login') {
-                loginTab.classList.add('auth-tab-active');
-                signupTab.classList.remove('auth-tab-active');
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-            } else {
-                signupTab.classList.add('auth-tab-active');
-                loginTab.classList.remove('auth-tab-active');
-                signupForm.style.display = 'block';
-                loginForm.style.display = 'none';
-            }
-        }
-
-        function handleSignup(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const password = formData.get('password');
-            
-            const users = Storage.load('users') || [];
-            
-            if (users.find(u => u.email === email)) {
-                showToast('Email already exists', 'error');
-                return;
-            }
-            
-            const newUser = {
-                id: generateId('user'),
-                name,
-                email,
-                password
-            };
-            
-            users.push(newUser);
-            Storage.save('users', users);
-            Storage.save('currentUser', { id: newUser.id, email: newUser.email, name: newUser.name });
-            
-            showToast('Account created successfully!');
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1000);
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            const formData = new FormData(e.target);
-            const email = formData.get('email');
-            const password = formData.get('password');
-            
-            const users = Storage.load('users') || [];
-            const user = users.find(u => u.email === email && u.password === password);
-            
-            if (user) {
-                Storage.save('currentUser', { id: user.id, email: user.email, name: user.name });
-                window.location.href = 'dashboard.html';
-            } else {
-                showToast('Invalid email or password', 'error');
-            }
-        }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const currentUser = getCurrentUser();
-        if (currentUser) {
-            window.location.href = 'dashboard.html';
-        }
-    });
-
+        const Storage = {
+            save: (key, data) => localStorage.setItem(key, JSON.stringify(data)),
+            load: (key) => {
+                const data = localStorage.getItem(key);
+                return data ? JSON.parse(data) : null;
+            },
+            remove: (key) => localStorage.removeItem(key)
+        };
     </script>
 </body>
 </html>
