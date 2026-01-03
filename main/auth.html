@@ -89,7 +89,42 @@
             return Storage.load("currentUser");
         }
 
-        
+
+        function initializeUserAccounts() {
+            if (!Storage.load("users")) {
+                Storage.save("users", [
+                {
+                    id: "1",
+                    name: "MAX Mustermann",
+                    email: "maxmustermann@exmple.de",
+                    password: "password123"
+                }
+                ]);
+            }
+        }
+
+        let currentTab = 'login';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            const loginTab = document.getElementById('login-tab');
+            const signupTab = document.getElementById('signup-tab');
+            const loginForm = document.getElementById('login-form-container');
+            const signupForm = document.getElementById('signup-form-container');
+            
+            if (tab === 'login') {
+                loginTab.classList.add('auth-tab-active');
+                signupTab.classList.remove('auth-tab-active');
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+            } else {
+                signupTab.classList.add('auth-tab-active');
+                loginTab.classList.remove('auth-tab-active');
+                signupForm.style.display = 'block';
+                loginForm.style.display = 'none';
+            }
+        }
+
 
 
     </script>
