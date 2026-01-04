@@ -1,0 +1,136 @@
+:root {
+    --font-size: 16px;
+    --spacing: 0.25rem;
+    --background: #E9EFFF;
+    --foreground: #252525;
+    --card: #ffffff;
+    --card-foreground: #252525;
+    --primary: #030213;
+    --primary-foreground: #ffffff;
+    --secondary: #f3f3f5;
+    --secondary-foreground: #030213;
+    --muted: #ececf0;
+    --muted-foreground: #717182;
+    --accent: #e9ebef;
+    --accent-foreground: #030213;
+    --destructive: #d4183d;
+    --destructive-foreground: #ffffff;
+    --border: rgba(0, 0, 0, 0.1);
+    --input-background: #f3f3f5;
+    --ring: #b4b4b4;
+    --radius: 0.625rem;
+}
+
+.page-header {
+    background-color: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.page-header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.icon-lg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.icon-xl {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--muted-foreground);
+}
+
+.empty-state-icon {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 auto 1rem;
+    opacity: 0.5;
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.badge-default {
+    background-color: var(--primary);
+    color: var(--primary-foreground);
+}
+
+.badge-secondary {
+    background-color: var(--secondary);
+    color: var(--secondary-foreground);
+}
+
+.badge-success {
+    background-color: #10b981;
+    color: white;
+}
+
+.badge-warning {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.badge-destructive {
+    background-color: var(--destructive);
+    color: var(--destructive-foreground);
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .page-header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-cols-2,
+    .grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+}
+
+
