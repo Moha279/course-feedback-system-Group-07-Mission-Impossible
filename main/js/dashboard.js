@@ -180,22 +180,20 @@ function showCreateSessionModal(courseId) {
                     </div>
 
                     <div class="form-group">
-    <div class="flex justify-between items-center mb-2">
-        <label class="form-label" style="margin: 0;">Questions *</label>
-        <button type="button" class="btn btn-sm btn-outline" onclick="addQuestion()">
-            <svg class="icon" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 8v8M8 12h8"></path>
-            </svg>
-            Add Question
-        </button>
-    </div>
-    <div id="questions-container">
-        <!-- Questions will be added here -->
-    </div>
-</div>
-
-
+                        <div class="flex justify-between items-center mb-2">
+                            <label class="form-label" style="margin: 0;">Questions *</label>
+                            <button type="button" class="btn btn-sm btn-outline" onclick="addQuestion()">
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 8v8M8 12h8"></path>
+                                </svg>
+                                Add Question
+                            </button>
+                        </div>
+                        <div id="questions-container">
+                            <!-- Questions will be added here -->
+                        </div>
+                    </div>
                 </div>
 
                 <div class="modal-footer">
@@ -363,3 +361,4 @@ document.addEventListener('DOMContentLoaded', () => {
         loadCourses();
     }
 });
+
