@@ -89,7 +89,7 @@
                                 </svg>
                                 <span class="ml-2">Copy Link</span>
                             </button>
-                            <button class="btn btn-outline btn-sm" title="QR Code">
+                            <button class="btn btn-outline btn-sm" title="QR Code" onclick="event.stopPropagation(); showQrCodeModal();">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <rect x="3" y="3" width="7" height="7"></rect>
                                     <rect x="14" y="3" width="7" height="7"></rect>
@@ -159,7 +159,7 @@
                                 </svg>
                                 <span class="ml-2">Copy Link</span>
                             </button>
-                            <button class="btn btn-outline btn-sm" title="QR Code">
+                            <button class="btn btn-outline btn-sm" title="QR Code" onclick="event.stopPropagation(); showQrCodeModal();">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <rect x="3" y="3" width="7" height="7"></rect>
                                     <rect x="14" y="3" width="7" height="7"></rect>
@@ -229,7 +229,7 @@
                                 </svg>
                                 <span class="ml-2">Copy Link</span>
                             </button>
-                            <button class="btn btn-outline btn-sm" title="QR Code">
+                            <button class="btn btn-outline btn-sm" title="QR Code" onclick="event.stopPropagation(); showQrCodeModal();">
                                 <svg class="icon" viewBox="0 0 24 24">
                                     <rect x="3" y="3" width="7" height="7"></rect>
                                     <rect x="14" y="3" width="7" height="7"></rect>
@@ -267,5 +267,30 @@
 
     <script src="js/app.js"></script>
     <script src="js/dashboard.js"></script>
+    <script>
+        function showQrCodeModal() {
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+
+            modal.onclick = (e) => {
+                if (e.target === modal) document.body.removeChild(modal);
+            };
+
+            const feedbackUrl = new URL('student-feedback.html', window.location.href).href;
+            const qrSrc = 'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' + encodeURIComponent(feedbackUrl);
+
+            modal.innerHTML = `
+                <div class="modal" onclick="event.stopPropagation()" style="max-width: 320px;">
+                    <div class="modal-content" style="display:flex; justify-content:center; padding: 1.5rem;">
+                        <div style="background: white; border: 1px solid var(--border); border-radius: 0.5rem; padding: 1rem;">
+                            <img src="${qrSrc}" alt="QR code" width="220" height="220" style="display:block;" />
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+        }
+    </script>
 </body>
 </html>
