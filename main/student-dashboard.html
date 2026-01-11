@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <title>Student Dashboard</title>
     <link rel="stylesheet" href="css/student-dashboard.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
 
@@ -20,10 +21,10 @@
 
                 <div>
                     <h1>Student Dashboard</h1>
-                    <p>Welcome back, student123!</p>
+                    <p>Welcome back, <span id="student-username">student</span>!</p>
                 </div>
 
-                <button class="btn btn-outline">
+                <button id="switch-user-btn" class="btn btn-outline" type="button">
                     <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"></path>
                         <path d="M16 17l5-5-5-5M21 12H9"></path>
@@ -223,6 +224,97 @@ function hideAnalytics(sessionId) {
     const analyticsElement = document.getElementById('analytics-' + sessionId);
     analyticsElement.style.display = 'none';
 }
+
+function getStudentUsername() {
+    try {
+        return (localStorage.getItem('studentUsername') || '').trim();
+    } catch (e) {
+        return '';
+    }
+}
+
+function setStudentUsername(username) {
+    try {
+        localStorage.setItem('studentUsername', (username || '').trim());
+    } catch (e) {
+    
+    }
+}
+
+function updateStudentUsernameUI() {
+    const usernameEl = document.getElementById('student-username');
+    if (!usernameEl) return;
+
+    const username = getStudentUsername();
+    usernameEl.textContent = username || 'student';
+}
+
+function showStudentUsernameModal() {
+    const modal = document.createElement('div');
+    modal.className = 'modal-overlay';
+
+    modal.onclick = (e) => {
+        if (e.target === modal) document.body.removeChild(modal);
+    };
+
+    modal.innerHTML = `
+        <div class="modal" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3 class="modal-title">Choose a username</h3>
+                <p class="modal-description">This name is used only to label your submissions.</p>
+            </div>
+            <form onsubmit="handleStudentUsernameSubmit(event)">
+                <div class="modal-content">
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input id="student-username-input" type="text" name="username" class="input" placeholder="e.g., student123" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline" onclick="window.location.href='auth.html'">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Weiter</button>
+                </div>
+            </form>
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    const input = modal.querySelector('#student-username-input');
+    if (input) {
+        input.value = getStudentUsername();
+        input.focus();
+        input.select();
+    }
+}
+
+function handleStudentUsernameSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const username = (formData.get('username') || '').toString().trim();
+    if (!username) return;
+
+    setStudentUsername(username);
+    updateStudentUsernameUI();
+
+    const modal = e.target.closest('.modal-overlay');
+    if (modal) document.body.removeChild(modal);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateStudentUsernameUI();
+
+    const username = getStudentUsername();
+    if (!username) showStudentUsernameModal();
+
+    const switchBtn = document.getElementById('switch-user-btn');
+    if (switchBtn) {
+        switchBtn.addEventListener('click', () => {
+            setStudentUsername('');
+            showStudentUsernameModal();
+        });
+    }
+});
 </script>
 
 </html>

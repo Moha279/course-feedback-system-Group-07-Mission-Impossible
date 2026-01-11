@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Course Feedback System</title>
     <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 
 </head>
 <body>
@@ -58,11 +59,9 @@
             <div class="auth-divider"></div>
 
             
-                <a href="student-dashboard.html">
-                    <button class="auth-student-btn" >
-                        Access Student Dashboard
-                    </button>
-                </a>
+                <button class="auth-student-btn" type="button" onclick="showStudentAccessModal()">
+                    Access Student Dashboard
+                </button>
            
         </div>
     </div>
@@ -167,8 +166,70 @@
             }
         }
 
+        function getStudentUsername() {
+            try {
+                return (localStorage.getItem('studentUsername') || '').trim();
+            } catch (e) {
+                return '';
+            }
+        }
 
+        function setStudentUsername(username) {
+            try {
+                localStorage.setItem('studentUsername', (username || '').trim());
+            } catch (e) {
+            
+            }
+        }
 
+        function showStudentAccessModal() {
+            const modal = document.createElement('div');
+            modal.className = 'modal-overlay';
+
+            modal.onclick = (e) => {
+                if (e.target === modal) document.body.removeChild(modal);
+            };
+
+            modal.innerHTML = `
+                <div class="modal" onclick="event.stopPropagation()">
+                    <div class="modal-header">
+                        <h3 class="modal-title">Choose a username</h3>
+                        <p class="modal-description">This name is used only to label your submissions.</p>
+                    </div>
+                    <form onsubmit="handleStudentAccessSubmit(event)">
+                        <div class="modal-content">
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input id="student-username-input" type="text" name="username" class="input" placeholder="e.g., student123" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline" onclick="document.body.removeChild(this.closest('.modal-overlay'))">Cancel</button>
+                            <button type="submit" class="btn btn-primary">continue</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            const input = modal.querySelector('#student-username-input');
+            if (input) {
+                input.value = getStudentUsername();
+                input.focus();
+                input.select();
+            }
+        }
+
+        function handleStudentAccessSubmit(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const username = (formData.get('username') || '').toString().trim();
+            if (!username) return;
+
+            setStudentUsername(username);
+            window.location.href = 'student-dashboard.html';
+        }
     </script>
 </body>
 </html>
