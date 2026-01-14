@@ -127,6 +127,33 @@
             document.title = `${course.courseName} - Course View`;
         }
 
+
+
+        function loadSessions() {
+            const courseId = getCourseIdFromUrl();
+            const sessions = Storage.load('sessions') || [];
+            const courseSessions = sessions.filter(s => s.courseId === courseId);
+
+            const container = document.getElementById('sessions-container');
+            if (!container) return;
+
+            container.innerHTML = courseSessions.map(session => `
+                <div class="card">
+                    <div class="card-content">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h4>${session.name}</h4>
+                                    <span class="badge badge-secondary">Week ${session.week}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+
         function showEditCourseModal() {
             const courseId = getCourseIdFromUrl();
             if (!courseId || typeof Storage === 'undefined') return;
@@ -222,6 +249,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             loadCourseHeader();
+            loadSessions();
         });
     </script>
 </body>
