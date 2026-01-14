@@ -155,9 +155,35 @@
 
                         <div class="flex flex-wrap gap-2">
                             <button class="btn btn-outline btn-sm"
-                                    onclick="window.location.href = 'live-feedback.html?sessionId=${session.id}'">
+                                    onclick="window.location.href = 'live-feedback.html'">
                                 Live View
                             </button>
+
+
+                            <button class="btn btn-outline btn-sm"
+                                    onclick="window.location.href = 'student-feedback.html'">
+                                Preview
+                            </button>
+
+
+                            <button class="btn btn-outline btn-sm"
+                                    onclick="window.location.href = 'session-analytics.html'">
+                                    Analytics
+                            </button>
+
+
+                            <button class="btn btn-outline btn-sm"
+                                    onclick="event.stopPropagation(); showQrCodeModal();">
+                                QR-Code
+                            </button>
+
+
+                            <button class="btn btn-outline btn-sm"
+                                     onclick="window.prompt('Link zum Kopieren:', 'student-feedback.html');">
+                                Session-Link
+                            </button>
+
+
                         </div>
 
 
