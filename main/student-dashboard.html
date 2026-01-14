@@ -237,7 +237,7 @@ function setStudentUsername(username) {
     try {
         localStorage.setItem('studentUsername', (username || '').trim());
     } catch (e) {
-    
+        // ignore
     }
 }
 
@@ -272,7 +272,7 @@ function showStudentUsernameModal() {
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline" onclick="window.location.href='auth.html'">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Weiter</button>
+                    <button type="submit" class="btn btn-primary">Continue</button>
                 </div>
             </form>
         </div>
