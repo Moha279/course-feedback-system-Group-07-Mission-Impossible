@@ -57,7 +57,10 @@
             <div class="analytics-card">
                 <div class="flex justify-between items-center mb-4">
                     <h3>3. What was the most confusing topic today?</h3>
-                    <button class="btn btn-outline btn-sm" disabled>Generate Summary (AI)</button>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <button class="btn btn-outline btn-sm" id="ai-summary-btn" onclick="generateAISummary();">Generate AI Summary</button>
+                        <small id="ai-summary-hint" style="font-size: 0.75rem; color: var(--muted-foreground); display: none;">Close the session to generate an AI summary.</small>
+                    </div>
                 </div>
 
                 <div class="keyword-cloud">
@@ -70,14 +73,90 @@
                 <div class="text-response-list">
                     <div class="text-response-item">The concept of pointers is still tricky.</div>
                     <div class="text-response-item">Why do we need manual memory management?</div>
-                    <div class="text-response-item">Stack vs Heap usage example please!</div>
-                    <div class="text-response-item">Syntax for pointers * and & is confusing.</div>
+                    <div class="text-response-item">I'm having trouble understanding the difference between the stack and the heap.</div>
                 </div>
             </div>
 
         </div>
-    </div>
-    
+    </div> 
+    <script>
+        function getSessionStatus() {
+            // Simulated: read from URL or storage; here we assume 'Closed' if header contains 'Closed'
+            const header = document.querySelector('.week-number');
+            return header && header.textContent.includes('Closed') ? 'closed' : 'open';
+        }
+
+        function updateAISummaryButton() {
+            const button = document.getElementById('ai-summary-btn');
+            const hint = document.getElementById('ai-summary-hint');
+            if (!button || !hint) return;
+            const status = getSessionStatus();
+            if (status === 'closed') {
+                button.disabled = false;
+                button.title = '';
+                hint.style.display = 'none';
+            } else {
+                button.disabled = true;
+                button.title = 'Close the session to generate an AI-based summary of the feedback.';
+                hint.style.display = 'inline';
+            }
+        }
+
+        function generateAISummary() {
+            const status = getSessionStatus();
+            if (status === 'open') return;
+
+            let overlay = document.getElementById('ai-summary-overlay');
+            if (overlay) {
+                document.body.removeChild(overlay);
+                return;
+            }
+
+            overlay = document.createElement('div');
+            overlay.id = 'ai-summary-overlay';
+            overlay.className = 'modal-overlay';
+            overlay.onclick = (e) => {
+                if (e.target === overlay) document.body.removeChild(overlay);
+            };
+
+            overlay.innerHTML = `
+                <div class="modal" onclick="event.stopPropagation()">
+                    <div class="modal-header">
+                        <h3 class="modal-title">AI Summary</h3>
+                        <button onclick="document.getElementById('ai-summary-overlay').remove()" style="background:none;border:none;color:var(--muted-foreground);cursor:pointer;font-size:1.5rem;line-height:1;">&times;</button>
+                    </div>
+                    <div class="modal-content">
+                        <p id="ai-summary-desc" class="modal-description">AI is analyzing student feedback…</p>
+                        <div id="ai-summary-body" style="text-align: center; padding: 2rem 0;">
+                            <div style="display: inline-block; width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(overlay);
+
+            setTimeout(() => {
+                const summaries = [
+                    `Students appreciate the clear examples and practical pace. A few suggest more interactive problem-solving sessions and slightly slower coverage of complex proofs.`,
+                    `Overall sentiment is positive. Learners find the content engaging but request additional optional exercises for deeper practice.`,
+                    `Feedback highlights enthusiasm for real-world applications. Some students feel the theoretical sections are dense and ask for supplementary visual summaries.`,
+                    `The majority enjoy the logical flow and quizzes. Minor requests include more office hours and clearer rubrics for assignments.`,
+                    `Learners value the structured slides and step-by-step explanations. A recurring theme is the desire for more worked examples before independent practice.`
+                ];
+                const randomSummary = summaries[Math.floor(Math.random() * summaries.length)];
+
+                document.getElementById('ai-summary-desc').textContent = 'AI-generated summary of student feedback';
+                document.getElementById('ai-summary-body').innerHTML = `
+                    <div style="background: var(--secondary); padding: 1rem; border-radius: 0.375rem; border-left: 4px solid var(--primary); text-align: left;">
+                        <p style="font-size: 0.875rem; color: var(--foreground); line-height: 1.6; white-space: pre-wrap; margin: 0;">${randomSummary}</p>
+                    </div>
+                `;
+            }, 1800);
+        }
+
+        document.addEventListener('DOMContentLoaded', updateAISummaryButton);
+    </script>
 </body>
 
 </html>
