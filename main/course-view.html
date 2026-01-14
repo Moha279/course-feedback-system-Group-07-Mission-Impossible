@@ -25,7 +25,7 @@
                             <span id="course-code" class="badge badge-secondary">CS101</span>
                             <span id="course-edit-status" class="badge badge-secondary">Read-only</span>
                         </div>
-                        <p style="color: var(--muted-foreground);">Fundamentals of programming and computational thinking</p>
+                        
                     </div>
                 </div>
                 <div class="flex gap-2">
@@ -163,45 +163,95 @@
                         <div class="session-actions">
                             <button class="btn btn-outline btn-sm"
                                     onclick="window.location.href = 'live-feedback.html'">
+
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="2"></circle>
+                                        <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path>
+                                    </svg>
+
                                 Live View
                             </button>
 
 
                             <button class="btn btn-outline btn-sm"
                                     onclick="window.location.href = 'student-feedback.html'">
+
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+
+
                                 Preview
                             </button>
 
 
                             <button class="btn btn-outline btn-sm"
                                     onclick="window.location.href = 'session-analytics.html'">
+
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <path d="M3 3v18h18"></path>
+                                        <path d="M18 17V9M13 17V5M8 17v-3"></path>
+                                    </svg>
                                     Analytics
                             </button>
 
 
                             <button class="btn btn-outline btn-sm"
                                     onclick="event.stopPropagation(); showQrCodeModal();">
+
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <rect x="3" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="3" width="7" height="7"></rect>
+                                        <rect x="14" y="14" width="7" height="7"></rect>
+                                        <rect x="3" y="14" width="7" height="7"></rect>
+                                    </svg>
+
                                 QR-Code
                             </button>
 
 
                             <button class="btn btn-outline btn-sm"
                                      onclick="window.prompt('Link zum Kopieren:', 'student-feedback.html');">
+
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+                                        <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+                                    </svg>
+
                                 Session-Link
                             </button>
 
                             <button class="btn btn-outline btn-sm">
+
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+
                                 Edit Session
                             </button>
 
 
                             <button class="btn btn-${session.isActive ? 'danger' : 'success'} btn-sm"
                                     onclick="closeSession('${session.id}')">
+
+                                    <svg class="icon" viewBox="0 0 24 24">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <path d="M15 9l-6 6M9 9l6 6"></path>
+                                    </svg>
+
                                 ${session.isActive ? 'Close Session' : 'Reopen Session'}
+
                             </button>
 
 
                             <button class="btn btn-outline btn-sm" , style="color: #dc2626;">
+
+                                <svg class="icon" viewBox="0 0 24 24">
+                                    <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
+                                </svg>
+
                                 Delete
                             </button>
 
