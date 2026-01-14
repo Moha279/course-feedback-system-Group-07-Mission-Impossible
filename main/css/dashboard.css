@@ -423,3 +423,25 @@
         width: 95%;
     }
 }
+
+.session-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.session-actions .btn {
+    white-space: normal;
+}
+
+@media (max-width: 768px) {
+    .session-actions {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .session-actions .btn {
+        width: 100%;
+    }
+}
