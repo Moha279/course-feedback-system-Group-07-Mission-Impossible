@@ -145,7 +145,14 @@
                                 <div class="flex items-center gap-2">
                                     <h4>${session.name}</h4>
                                     <span class="badge badge-secondary">Week ${session.week}</span>
+                                    <span class="badge ${session.isActive ? "badge-success" : "badge-warning"}">
+                                        ${session.isActive ? "Active" : "Closed"}
+                                    </span>
                                 </div>
+
+                                <p class="text-sm" style="color: var(--muted-foreground);">
+                                    38 responses
+                                </p>
                                 
                             </div>
                         </div>
@@ -153,7 +160,7 @@
 
 
 
-                        <div class="flex flex-wrap gap-2">
+                        <div class="flex flex-wrap gap-2 w-full mt-2">
                             <button class="btn btn-outline btn-sm"
                                     onclick="window.location.href = 'live-feedback.html'">
                                 Live View
@@ -183,6 +190,21 @@
                                 Session-Link
                             </button>
 
+                            <button class="btn btn-outline btn-sm">
+                                Edit Session
+                            </button>
+
+
+                            <button class="btn btn-${session.isActive ? 'danger' : 'success'} btn-sm"
+                                    onclick="closeSession('${session.id}')">
+                                ${session.isActive ? 'Close Session' : 'Reopen Session'}
+                            </button>
+
+
+                            <button class="btn btn-outline btn-sm" , style="color: #dc2626;">
+                                Delete
+                            </button>
+
 
                         </div>
 
@@ -193,6 +215,26 @@
                 </div>
             `).join('');
         }
+
+        function closeSession(sessionId) {
+            const sessions = Storage.load('sessions') || [];
+            const index = sessions.findIndex(s => s.id === sessionId);
+            if (index === -1) return;
+
+            const session = sessions[index];
+
+            session.isActive = !session.isActive;
+            session.status = session.isActive ? 'open' : 'closed';
+
+            Storage.save('sessions', sessions);
+
+            if (typeof showToast === 'function') {
+                showToast(session.isActive ? 'Session reopened!' : 'Session closed!');
+            }
+
+            loadSessions();
+        }
+
 
 
         function showEditCourseModal() {
