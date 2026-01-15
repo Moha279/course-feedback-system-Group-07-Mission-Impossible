@@ -184,7 +184,7 @@ function confirmCloseSession(sessionId) {
             </div>
             <div style="padding: 1.5rem; display: flex; gap: 0.5rem; justify-content: flex-end;">
                 <button type="button" class="btn btn-outline" onclick="document.body.removeChild(this.closest('[data-close-session-modal]'))">Cancel</button>
-                <button type="button" class="btn btn-destructive" onclick="confirmCloseSessionAction('${sessionId}', this)">Yes, end session</button>
+                <button type="button" class="btn btn-destructive" onclick="confirmCloseSessionAction('${sessionId}', this)">Yes, close session</button>
             </div>
         </div>
     `;
