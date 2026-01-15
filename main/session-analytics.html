@@ -64,16 +64,19 @@
                 </div>
 
                 <div class="keyword-cloud">
-                    <span class="keyword">Pointers (8)</span>
-                    <span class="keyword">Memory (5)</span>
-                    <span class="keyword">Stack (3)</span>
-                    <span class="keyword">Syntax (2)</span>
+                    <span class="keyword" data-keyword="pointers" onclick="filterByKeyword('pointers')">Pointers (8)</span>
+                    <span class="keyword" data-keyword="memory" onclick="filterByKeyword('memory')">Memory (5)</span>
+                    <span class="keyword" data-keyword="stack" onclick="filterByKeyword('stack')">Stack (3)</span>
+                    <span class="keyword" data-keyword="syntax" onclick="filterByKeyword('syntax')">Syntax (2)</span>
                 </div>
 
-                <div class="text-response-list">
-                    <div class="text-response-item">The concept of pointers is still tricky.</div>
-                    <div class="text-response-item">Why do we need manual memory management?</div>
-                    <div class="text-response-item">I'm having trouble understanding the difference between the stack and the heap.</div>
+                <p id="keyword-hint" style="font-size: 0.875rem; color: var(--muted-foreground); margin-bottom: 1rem; display: none;">Select a keyword to emphasize related feedback.</p>
+
+                <div class="text-response-list" id="text-response-list">
+                    <div class="text-response-item" data-topics="pointers memory">The concept of pointers is still tricky.</div>
+                    <div class="text-response-item" data-topics="memory">Why do we need manual memory management?</div>
+                    <div class="text-response-item" data-topics="stack memory">I'm having trouble understanding the difference between the stack and the heap.</div>
+                    <div class="text-response-item" data-topics="syntax">Syntax for pointers * and & is confusing.</div>
                 </div>
             </div>
 
@@ -153,6 +156,52 @@
                     </div>
                 `;
             }, 1800);
+        }
+
+        function filterByKeyword(keyword) {
+            const items = document.querySelectorAll('.text-response-item');
+            const hint = document.getElementById('keyword-hint');
+            const keywords = document.querySelectorAll('.keyword');
+            
+            // Reset all keywords and items
+            keywords.forEach(k => {
+                k.style.backgroundColor = 'white';
+                k.style.color = 'var(--foreground)';
+            });
+            items.forEach(item => {
+                item.style.backgroundColor = 'var(--accent)';
+                item.style.border = '1px solid var(--border)';
+                item.style.opacity = '1';
+            });
+            
+            // If clicking the same active keyword, reset
+            if (window.activeKeyword === keyword) {
+                window.activeKeyword = null;
+                hint.style.display = 'none';
+                return;
+            }
+            
+            // Set new active keyword
+            window.activeKeyword = keyword;
+            const activeKeywordEl = document.querySelector(`[data-keyword="${keyword}"]`);
+            activeKeywordEl.style.backgroundColor = 'var(--primary)';
+            activeKeywordEl.style.color = 'white';
+            
+            // Emphasize matching items, dim others
+            let hasMatch = false;
+            items.forEach(item => {
+                const topics = item.getAttribute('data-topics').split(' ');
+                if (topics.includes(keyword)) {
+                    item.style.backgroundColor = '#f0fdf4';
+                    item.style.border = '1px solid #bbf7d0';
+                    item.style.opacity = '1';
+                    hasMatch = true;
+                } else {
+                    item.style.opacity = '0.4';
+                }
+            });
+            
+            hint.style.display = hasMatch ? 'none' : 'block';
         }
 
         document.addEventListener('DOMContentLoaded', updateAISummaryButton);
