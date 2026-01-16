@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Professor Dashboard - Course Feedback System</title>
+    <link rel="stylesheet" href="css/bot.css">
     <link rel="stylesheet" href="css/live-analytics.css">
     <link rel="stylesheet" href="css/student-dashboard.css">
     <link rel="stylesheet" href="css/dashboard.css">
@@ -43,11 +44,43 @@
             </div>
             
             <div class="dashboard-grid" id="courses-container">
-                <!-- Courses will be loaded here by JavaScript -->
             </div>
         </div>
     </div>
 
+    <div id="page-guide-container">
+        <div id="guide-popup" class="guide-popup hidden">
+            <div class="popup-header">
+                <h4 id="popup-title">Page Info</h4>
+                <button onclick="toggleGuide()" class="close-btn">&times;</button>
+            </div>
+            <div class="popup-content">
+                <p id="popup-description">Loading info...</p>
+                <div class="popup-tips">
+                    <strong>Tip:</strong> <span id="popup-tip">Click elements to interact.</span>
+                </div>
+            </div>
+        </div>
+
+        <div id="guide-bot" class="guide-bot" onclick="toggleGuide()">
+            <div class="bot-antenna">
+                <div class="antenna-ball"></div>
+            </div>
+            <div class="bot-head">
+                <div class="bot-face">
+                    <div class="eye left"></div>
+                    <div class="eye right"></div>
+                </div>
+                <div class="bot-cheek left"></div>
+                <div class="bot-cheek right"></div>
+            </div>
+            <div class="bot-body-shape">
+                <div class="bot-detail"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bot.js"></script>
     <script src="js/app.js"></script>
     <script src="js/dashboard.js"></script>
 </body>
