@@ -1,0 +1,206 @@
+/* --- Variables --- */
+:root {
+    --bot-main: #ffffff;
+    --bot-border: #252525;
+    --bot-accent: #e9ebef;
+    --bot-eye: #252525;
+    --bot-cheek: #ffb7b7;
+    --popup-bg: rgba(255, 255, 255, 0.98);
+    --shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+/* Container */
+#page-guide-container {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* --- Bot Design --- */
+.guide-bot {
+    cursor: pointer;
+    position: relative;
+    width: 64px;
+    height: 74px;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: float 4s ease-in-out infinite;
+}
+
+.guide-bot:hover { transform: scale(1.1) rotate(-5deg); }
+.guide-bot:active { transform: scale(0.95); }
+
+/* Head */
+.bot-head {
+    width: 52px;
+    height: 46px;
+    background: var(--bot-main);
+    border: 2px solid var(--bot-border);
+    border-radius: 14px;
+    position: relative;
+    z-index: 2;
+    margin: 0 auto;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.05);
+}
+
+/* Face */
+.bot-face {
+    position: absolute;
+    top: 14px;
+    left: 8px;
+    right: 8px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4px;
+}
+
+.eye {
+    width: 8px;
+    height: 10px;
+    background: var(--bot-eye);
+    border-radius: 40%;
+    animation: blink 4s infinite;
+}
+
+/* Cheeks */
+.bot-cheek {
+    position: absolute;
+    bottom: 8px;
+    width: 6px;
+    height: 3px;
+    background: var(--bot-cheek);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+.bot-cheek.left { left: 6px; }
+.bot-cheek.right { right: 6px; }
+
+/* Antenna */
+.bot-antenna {
+    width: 2px;
+    height: 14px;
+    background: var(--bot-border);
+    margin: 0 auto;
+    position: relative;
+    top: 4px;
+    z-index: 1;
+    transition: top 0.3s;
+}
+
+.antenna-ball {
+    width: 10px;
+    height: 10px;
+    background: #667eea;
+    border: 2px solid var(--bot-border);
+    border-radius: 50%;
+    position: absolute;
+    top: -9px;
+    left: -4px;
+    animation: sway 3s ease-in-out infinite;
+}
+
+/* Body */
+.bot-body-shape {
+    width: 42px;
+    height: 22px;
+    background: var(--bot-main);
+    border: 2px solid var(--bot-border);
+    border-top: none;
+    border-radius: 0 0 22px 22px;
+    margin: -4px auto 0;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bot-detail {
+    width: 12px;
+    height: 6px;
+    border-radius: 4px;
+    background: var(--bot-accent);
+    margin-top: 4px;
+}
+
+/* --- Popup Design --- */
+.guide-popup {
+    position: absolute;
+    right: 85px;
+    top: 50%;
+    transform: translateY(-50%) scale(1);
+    width: 260px;
+    background: var(--popup-bg);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow);
+    opacity: 1;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-origin: right center;
+    text-align: left;
+}
+
+.guide-popup.hidden {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.8) translateX(20px);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+.popup-header h4 { margin: 0; font-size: 1rem; font-weight: 600; color: #111; }
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
+    line-height: 0.8;
+    transition: color 0.2s;
+}
+.close-btn:hover { color: #333; }
+
+.popup-content p {
+    font-size: 0.9rem;
+    color: #444;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.popup-tips {
+    background: #f4f6f8;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #555;
+    border-left: 3px solid #667eea;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes blink {
+    0%, 96%, 100% { transform: scaleY(1); }
+    98% { transform: scaleY(0.1); }
+}
+
+@keyframes sway {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
