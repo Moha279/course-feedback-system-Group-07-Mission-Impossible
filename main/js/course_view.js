@@ -122,7 +122,8 @@ function loadSessions() {
                     </button>
 
 
-                    <button class="btn btn-outline btn-sm" , style="color: #dc2626;">
+                    <button class="btn btn-outline btn-sm" style="color: #dc2626;"
+                            onclick="confirmDeleteSession('${session.id}')">
 
                         <svg class="icon" viewBox="0 0 24 24">
                             <path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path>
@@ -198,5 +199,60 @@ function confirmCloseSessionAction(sessionId, btn) {
     if (modal) document.body.removeChild(modal);
     closeSession(sessionId);
 }
+
+function confirmDeleteSession(sessionId) {
+    const modal = document.createElement('div');
+
+    modal.style.position = 'fixed';
+    modal.style.inset = '0';
+    modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'center';
+    modal.style.justifyContent = 'center';
+    modal.style.zIndex = '1000';
+
+    modal.onclick = (e) => {
+        if (e.target === modal) modal.remove();
+    };
+
+    modal.innerHTML = `
+        <div style="background:white;border-radius:12px;width:90%;max-width:480px;padding:24px;"
+             onclick="event.stopPropagation()">
+            <h3 style="font-size:1.25rem;font-weight:600;margin:0;">
+                Delete session?
+            </h3>
+            <p style="margin:8px 0 20px;color:#6b7280;">
+                This action cannot be undone.
+            </p>
+
+            <div style="display:flex;justify-content:flex-end;gap:8px;">
+                <button class="btn btn-outline"
+                        onclick="this.closest('[data-delete-modal]').remove()">
+                    Cancel
+                </button>
+                <button class="btn btn-destructive"
+                        onclick="deleteSessionConfirmed('${sessionId}', this)">
+                    Delete
+                </button>
+            </div>
+        </div>
+    `;
+
+    modal.setAttribute('data-delete-modal', 'true');
+    document.body.appendChild(modal);
+}
+
+function deleteSessionConfirmed(sessionId, btn) {
+    const modal = btn.closest('[data-delete-modal]');
+    if (modal) modal.remove();
+
+    const sessions = Storage.load('sessions') || [];
+    const updatedSessions = sessions.filter(s => s.id !== sessionId);
+
+    Storage.save('sessions', updatedSessions);
+
+    loadSessions(); 
+}
+
 
 
