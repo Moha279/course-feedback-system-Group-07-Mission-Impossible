@@ -276,7 +276,7 @@ function handleCreateCourse(e) {
     const modal = e.target.closest('.modal-overlay');
     if (modal) document.body.removeChild(modal);
 
-    loadCourses();
+    loadSessions();
 }
 
 
@@ -319,6 +319,7 @@ function handleCreateSession(e) {
     const modal = e.target.closest('.modal-overlay');
     if (modal) document.body.removeChild(modal);
 
+    window.location.reload();
     loadCourses();
 }
 
