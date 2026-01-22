@@ -10,13 +10,26 @@ function toggleGuide() {
     }
 }
 
+function autoShowGuideForAuth() {
+    const path = window.location.pathname;
+    if (path.includes('auth')) {
+        const popup = document.getElementById('guide-popup');
+        updateGuideContent();
+        popup.classList.remove('hidden');
+    }
+}
+
 function updateGuideContent() {
     const path = window.location.pathname;
     const titleEl = document.getElementById('popup-title');
     const descEl = document.getElementById('popup-description');
     const tipEl = document.getElementById('popup-tip');
 
-    if (path.includes('student-dashboard')) {
+    if (path.includes('auth')) {
+        titleEl.textContent = 'Welcome!';
+        descEl.textContent = 'Access your account to manage courses and provide feedback.';
+        tipEl.textContent = 'Click the bot icon anytime for help with navigation.';
+    } else if (path.includes('student-dashboard')) {
         titleEl.textContent = 'Student Dashboard';
         descEl.textContent = 'View all the courses you have participated in here.';
         tipEl.textContent = 'Click "View My Response" to check your feedback.';
@@ -51,3 +64,6 @@ document.addEventListener('click', function(event) {
         popup.classList.add('hidden');
     }
 });
+
+// Auto-show guide for auth pages when page loads
+document.addEventListener('DOMContentLoaded', autoShowGuideForAuth);
