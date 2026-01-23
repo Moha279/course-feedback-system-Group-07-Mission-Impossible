@@ -19,15 +19,40 @@
                     <h1 class="mt-2">Intro to Postfix <span class="week-number">Week 7</span></h1>
                 </div>
                 <div class="flex gap-2">
-                    <button class="btn btn-outline">
-                        <svg class="icon" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                        Copy Link
+                    <button class="btn btn-outline btn-sm"
+                            onclick="window.prompt('Link zum Kopieren:', 'student-feedback.html');">
+                            <svg class="icon" viewBox="0 0 24 24" width="16" height="16"
+                                stroke="currentColor" fill="none" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"></path>
+                            </svg>
+                        Session-Link
                     </button>
-                    <button class="btn btn-outline">
-                        <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
-                        QR Code
+                    <button class="btn btn-outline btn-sm"
+                            onclick="event.stopPropagation(); showQrCodeModal();">
+
+                            <svg class="icon" viewBox="0 0 24 24" width="16" height="16"
+                                stroke="currentColor" fill="none" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+
+                        QR-Code
                     </button>
                     <button class="btn btn-destructive" onclick="confirmEndSessionLiveView()">
+                        <svg class="icon" viewBox="0 0 24 24"
+                            width="16" height="16"
+                            stroke="currentColor" fill="none"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M15 9l-6 6M9 9l6 6"></path>
+                        </svg>
                         Close Session
                     </button>
                 </div>
@@ -189,5 +214,6 @@
     </div>
 
     <script src="js/bot.js"></script>
+    <script src="js/course_view.js"></script>
 </body>
 </html>
