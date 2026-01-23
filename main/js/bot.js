@@ -52,7 +52,7 @@ function updateGuideContent() {
     } else {
         titleEl.textContent = 'Welcome!';
         descEl.textContent = 'I am here to help you navigate the feedback system.';
-        tipEl.textContent = 'Navigate through the menu to see more options.';
+        tipEl.textContent = 'Enter a username to stay anonymous. This is only used so you can view your results later.';
     }
 }
 
