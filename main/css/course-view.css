@@ -24,7 +24,7 @@
 .page-header {
     background-color: var(--card);
     border-bottom: 1px solid var(--border);
-    padding: 1rem 0;
+    padding: s;
     margin-bottom: 2rem;
 }
 
