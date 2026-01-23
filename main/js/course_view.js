@@ -6,6 +6,24 @@ function loadSessions() {
     const container = document.getElementById('sessions-container');
     if (!container) return;
 
+    if (courseSessions.length === 0) {
+        container.innerHTML = `
+            <div class="empty-state">
+                <svg class="empty-state-icon" viewBox="0 0 24 24">
+                    <path d="M3 3h18v18H3z"></path>
+                    <path d="M7 7h10v10H7z"></path>
+                </svg>
+                <h3>No sessions yet</h3>
+                <p>Create your first session to start collecting feedback.</p>
+                <button class="btn btn-primary mt-4"
+                    onclick="showCreateSessionModal(getCourseIdFromUrl())">
+                    Create Session
+                </button>
+            </div>
+        `;
+        return;
+    }
+
     container.innerHTML = courseSessions.map(session => `
         <div class="card">
             <div class="card-content">

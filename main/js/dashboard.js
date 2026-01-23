@@ -38,6 +38,10 @@ function loadCourses() {
                     <path d="M16 2v4M8 2v4M3 10h18"></path>
                 </svg>
                 <p>No courses yet. Create your first course to get started!</p>
+                <button class="btn btn-primary mt-4"
+                    onclick="showCreateCourseModal()">
+                    Create Course
+                </button>
             </div>
         `;
         return;
