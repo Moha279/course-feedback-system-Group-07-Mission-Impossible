@@ -340,10 +340,22 @@
     border-left: 4px solid #ef4444;
 }
 
+#courses-container:has(.empty-state) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .empty-state {
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 3rem 2.5rem;
     color: var(--muted-foreground);
+
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    max-width: 400px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.05);
 }
 
 .empty-state-icon {
